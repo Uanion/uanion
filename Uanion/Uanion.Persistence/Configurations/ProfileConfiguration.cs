@@ -15,6 +15,5 @@ internal class ProfileConfiguration : IEntityTypeConfiguration<Profile>
         builder
             .Property(x => x.UserId)
             .IsRequired();
-        //todo: Need to clarify if it's required to add more checks
     }
 }
