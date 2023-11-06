@@ -1,13 +1,23 @@
 using FluentValidation;
+using Uanion.Application.Contracts.Persistence;
 
 namespace Uanion.Application.Features.Profile.Commands.CreateProfile;
 
 public class CreateProfileCommandValidator : AbstractValidator<CreateProfileCommand>
 {
-    public CreateProfileCommandValidator()
-    {
+    private readonly IUserRepository _userRepository;
+
+    public CreateProfileCommandValidator(IUserRepository userRepository)
+    {   
+        _userRepository = userRepository;
+
         RuleFor(p => p.UserId)
-            .NotNull();
-        //todo: check that this is the ID of an existing User
+        .NotNull()
+        .MustAsync(IsUserExist).WithMessage("User with ID {UserId} does not exist");
+    }
+
+    private async Task<bool> IsUserExist(Guid userId, CancellationToken token)
+    {
+        return await _userRepository.GetByIdAsync(userId) != null;
     }
 }
