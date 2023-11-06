@@ -10,8 +10,11 @@ public class UanionDbContext : DbContext
     { }
 
     public DbSet<User> Users { get; set; }
-
+    
+    public DbSet<Dialog> Dialogs { get; set; }
+    
     public DbSet<Profile> Profiles { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
