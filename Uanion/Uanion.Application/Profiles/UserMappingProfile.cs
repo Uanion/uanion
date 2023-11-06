@@ -8,7 +8,7 @@ namespace Uanion.Application.Profiles;
 public class UserMappingProfile : Profile
 {
     public UserMappingProfile()
-    {
+    {   
         CreateMap<CreateUserCommand, User>();
         CreateMap<User, UserViewModel>();
     }
