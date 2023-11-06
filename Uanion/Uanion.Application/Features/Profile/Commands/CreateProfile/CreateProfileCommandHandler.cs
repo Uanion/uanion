@@ -7,21 +7,19 @@ namespace Uanion.Application.Features.Profile.Commands.CreateProfile;
 public class CreateProfileCommandHandler : IRequestHandler<CreateProfileCommand, Guid>
 {
     private readonly IProfileRepository _profileRepository;
-    private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     private readonly CreateProfileCommandValidator _validator;
 
     public CreateProfileCommandHandler(IProfileRepository profileRepository, IUserRepository userRepository, IMapper mapper)
     {
         _profileRepository = profileRepository;
-        _userRepository = userRepository;
         _mapper = mapper;
         _validator = new CreateProfileCommandValidator(userRepository);
     }
 
     public async Task<Guid> Handle(CreateProfileCommand request, CancellationToken cancellationToken)
     {
-        var validatorResult = await _validator.ValidateAsync(request);
+        var validatorResult = await _validator.ValidateAsync(request, cancellationToken);
 
         if (validatorResult.Errors.Count > 0)
         {
