@@ -17,6 +17,8 @@ public static class PersistenceServiceRegistration
 
         services.AddScoped<IUserRepository, UserRepository>();
 
+        services.AddScoped<IProfileRepository, ProfileRepository>();
+
         return services;
     }
 }
