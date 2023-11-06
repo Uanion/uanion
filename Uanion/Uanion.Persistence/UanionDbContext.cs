@@ -11,6 +11,8 @@ public class UanionDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
 
+    public DbSet<Profile> Profiles { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(UanionDbContext).Assembly);
