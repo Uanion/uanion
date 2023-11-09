@@ -13,7 +13,9 @@ internal class ProfileConfiguration : IEntityTypeConfiguration<Profile>
             .HasKey(x => x.ProfileId);
 
         builder
-            .Property(x => x.UserId)
+            .HasOne(x => x.User)
+            .WithOne(x => x.Profile)
+            .HasForeignKey<Profile>(x => x.UserId)
             .IsRequired();
     }
 }

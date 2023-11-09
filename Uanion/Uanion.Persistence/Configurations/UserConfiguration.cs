@@ -14,25 +14,27 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder
             .Property(x => x.Email)
-            .IsRequired()
-            .HasMaxLength(255);
+            .IsRequired();
 
         builder
             .Property(x => x.Password)
-            .IsRequired()
-            .HasMaxLength(50);
+            .IsRequired();
 
         builder
             .Property(x => x.Nickname)
-            .IsRequired()
-            .HasMaxLength(255);
+            .IsRequired();
 
         builder
-            .Property(x => x.FirstName)
-            .HasMaxLength(255);
+            .Property(x => x.FirstName);
 
         builder
-            .Property(x => x.LastName)
-            .HasMaxLength(255);
+            .Property(x => x.LastName);
+
+        builder
+            .HasIndex(x => x.Email)
+            .IsUnique();
+
+        builder
+            .HasIndex(x => x.Nickname);
     }
 }

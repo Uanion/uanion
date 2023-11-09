@@ -17,4 +17,10 @@ public class User : AuditableEntity
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
+
+    public Profile? Profile { get; set; }
+
+    public ICollection<UserDialog>? UsersDialogs { get; set; }
+
+    public ICollection<Message>? Messages { get; set; }
 }
