@@ -2,7 +2,7 @@
 
 namespace Uanion.Domain.Entities;
 
-public class Message : AuditableEntity
+public class Message : AuditableEntity, ISoftDeletable
 {
     public Guid MessageId { get; set; }
 
@@ -25,4 +25,6 @@ public class Message : AuditableEntity
     public ICollection<Message>? ReplyMessages { get; set; }
 
     public bool IsRead { get; set; } = false;
+
+    public bool IsDeleted { get; set; }
 }

@@ -2,7 +2,7 @@
 
 namespace Uanion.Domain.Entities;
 
-public class ProfilePost : AuditableEntity
+public class ProfilePost : AuditableEntity, ISoftDeletable
 {
     public Guid ProfilePostId { get; set; }
 
@@ -15,4 +15,6 @@ public class ProfilePost : AuditableEntity
     public Profile Profile { get; set; } = default!;
 
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+
+    public bool IsDeleted { get; set; }
 }

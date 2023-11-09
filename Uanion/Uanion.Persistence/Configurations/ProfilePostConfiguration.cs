@@ -14,15 +14,17 @@ internal class ProfilePostConfiguration : IEntityTypeConfiguration<ProfilePost>
 
         builder
             .HasOne(x => x.AuthorUser)
-            .WithMany()
+            .WithMany(u => u.ProfilePosts)
             .HasForeignKey(x => x.AuthorUserId)
-            .IsRequired();
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder
             .HasOne(x => x.Profile)
-            .WithMany()
+            .WithMany(p => p.ProfilePosts)
             .HasForeignKey(x => x.ProfileId)
-            .IsRequired();
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder
             .Property(x => x.Timestamp)
