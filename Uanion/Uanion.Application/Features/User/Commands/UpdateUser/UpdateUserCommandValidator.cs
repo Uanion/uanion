@@ -1,15 +1,19 @@
 ﻿using FluentValidation;
 
-namespace Uanion.Application.Features.User.Commands.CreateUser;
+namespace Uanion.Application.Features.User.Commands.UpdateUser;
 
-public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
+public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
 {
-    public CreateUserCommandValidator()
+    public UpdateUserCommandValidator()
     {
-        RuleFor(p => p.Email)
+        RuleFor(p => p.UserId)
             .NotEmpty().WithMessage("{PropertyName} is required")
-            .NotNull()
-            .MaximumLength(255).WithMessage("{PropertyName} must not exceed 255 characters");
+            .NotNull();
+
+        RuleFor(p => p.Email)
+           .NotEmpty().WithMessage("{PropertyName} is required")
+           .NotNull()
+           .MaximumLength(255).WithMessage("{PropertyName} must not exceed 255 characters");
 
         RuleFor(p => p.Password)
             .NotEmpty().WithMessage("{PropertyName} is required")

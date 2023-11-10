@@ -1,7 +1,7 @@
 using Uanion.Application.Features.Profile.Commands.CreateProfile;
 using Uanion.Application.Features.Profile.Queries.GetProfile;
 
-namespace Uanion.Application.Profiles;
+namespace Uanion.Application.MappingProfiles;
 
 public class ProfileMappingProfile : AutoMapper.Profile
 {

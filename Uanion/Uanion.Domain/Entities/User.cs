@@ -2,7 +2,7 @@
 
 namespace Uanion.Domain.Entities;
 
-public class User : AuditableEntity
+public class User : AuditableEntity, ISoftDeletable
 {
     public Guid UserId { get; set; }
 
@@ -17,4 +17,14 @@ public class User : AuditableEntity
     public string? FirstName { get; set; }
 
     public string? LastName { get; set; }
+
+    public Profile? Profile { get; set; }
+
+    public ICollection<UserDialog>? UsersDialogs { get; set; }
+
+    public ICollection<Message>? Messages { get; set; }
+
+    public ICollection<ProfilePost>? ProfilePosts { get; set; }
+
+    public bool IsDeleted { get; set; }
 }

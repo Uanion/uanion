@@ -22,20 +22,15 @@ public class BaseRepository<T> : IAsyncRepository<T> where T : class
 
     public async Task DeleteAsync(T entity)
     {
-        _dbContext.Entry(entity).State = EntityState.Modified;
+        _dbContext.Set<T>().Remove(entity);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<T?> GetByIdAsync(Guid id)
-    {
-        T? t = await _dbContext.Set<T>().FindAsync(id);
-        return t;
-    }
+    public async Task<T?> GetByIdAsync(Guid id) =>
+        await _dbContext.Set<T>().FindAsync(id);
 
-    public async Task<IReadOnlyList<T>> ListAllAsync()
-    {
-        return await _dbContext.Set<T>().ToListAsync();
-    }
+    public async Task<IReadOnlyList<T>> ListAllAsync() =>
+        await _dbContext.Set<T>().ToListAsync();
 
     public async Task UpdateAsync(T entity)
     {

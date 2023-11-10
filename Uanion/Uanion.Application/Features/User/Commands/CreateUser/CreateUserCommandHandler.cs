@@ -19,7 +19,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
 
     public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var validatorResult = await _validator.ValidateAsync(request);
+        var validatorResult = await _validator.ValidateAsync(request, cancellationToken);
 
         if (validatorResult.Errors.Count > 0)
         {
