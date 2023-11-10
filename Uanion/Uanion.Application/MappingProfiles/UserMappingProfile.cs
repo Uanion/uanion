@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Uanion.Application.Features.User.Commands.CreateUser;
+﻿using Uanion.Application.Features.User.Commands.CreateUser;
+using Uanion.Application.Features.User.Commands.UpdateUser;
 using Uanion.Application.Features.User.Queries.GetUser;
 using Uanion.Domain.Entities;
 
@@ -10,6 +10,8 @@ public class UserMappingProfile : AutoMapper.Profile
     public UserMappingProfile()
     {   
         CreateMap<CreateUserCommand, User>();
+        CreateMap<UpdateUserCommand, User>();
+
         CreateMap<User, UserViewModel>();
     }
 }
