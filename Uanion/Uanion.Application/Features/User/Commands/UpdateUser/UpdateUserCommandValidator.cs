@@ -6,6 +6,10 @@ public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
 {
     public UpdateUserCommandValidator()
     {
+        RuleFor(p => p.UserId)
+            .NotEmpty().WithMessage("{PropertyName} is required")
+            .NotNull();
+
         RuleFor(p => p.Email)
            .NotEmpty().WithMessage("{PropertyName} is required")
            .NotNull()
