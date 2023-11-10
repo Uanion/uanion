@@ -1,6 +1,7 @@
 ﻿using Uanion.Domain.Common;
 
 namespace Uanion.Domain.Entities;
+
 public class ProfilePhoto : AuditableEntity, ISoftDeletable
 {
     public Guid ProfilePhotoId { get; set; }

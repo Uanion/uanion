@@ -1,4 +1,5 @@
 ﻿namespace Uanion.Application.Features.User.Queries.GetUsersList;
+
 public class UserListViewModel
 {
     public Guid UserId { get; set; }

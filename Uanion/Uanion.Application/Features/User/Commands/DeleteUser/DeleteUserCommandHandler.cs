@@ -4,6 +4,7 @@ using Uanion.Application.Contracts.Persistence;
 using Uanion.Application.Exceptions;
 
 namespace Uanion.Application.Features.User.Commands.DeleteUser;
+
 public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
 {
     private readonly IUserRepository _userRepository;
@@ -22,12 +23,12 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
 
         if (request.IsHardDelete)
         {
-            userToDelete.IsDeleted = true;
-            await _userRepository.UpdateAsync(userToDelete);
+            await _userRepository.DeleteAsync(userToDelete);
         }
         else
         {
-            await _userRepository.DeleteAsync(userToDelete);
+            userToDelete.IsDeleted = true;
+            await _userRepository.UpdateAsync(userToDelete);
         }
     }
 }
