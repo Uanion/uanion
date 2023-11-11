@@ -18,7 +18,7 @@ public class UpdateProfileCommandValidator : AbstractValidator<UpdateProfileComm
         RuleFor(p => p.UserId)
          .NotEmpty().WithMessage("{PropertyName} is required")
          .NotNull()
-         .MustAsync(IsUserExist).WithMessage("User with ID {UserId} does not exist");
+         .MustAsync(IsUserExist).WithMessage("User with ID {PropertyValue} does not exist");
     }
     private async Task<bool> IsUserExist(Guid userId, CancellationToken token) =>
         await _userRepository.GetByIdAsync(userId) != null;
