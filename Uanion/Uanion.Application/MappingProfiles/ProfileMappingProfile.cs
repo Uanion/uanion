@@ -10,10 +10,10 @@ public class ProfileMappingProfile : AutoMapper.Profile
 {
     public ProfileMappingProfile()
     {
-        CreateMap<CreateProfileCommand, Domain.Entities.Profile>();
+        CreateMap<CreateProfileCommand, Profile>();
         CreateMap<UpdateProfileCommand, Profile>();
 
-        CreateMap<Domain.Entities.Profile, ProfileViewModel>();
-        CreateMap<Domain.Entities.Profile, ProfileListViewModel>();
+        CreateMap<Profile, ProfileViewModel>();
+        CreateMap<Profile, ProfileListViewModel>();
     }
 }
