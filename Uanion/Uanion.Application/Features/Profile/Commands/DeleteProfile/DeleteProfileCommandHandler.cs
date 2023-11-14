@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Uanion.Application.Contracts.Persistence;
 using Uanion.Application.Exceptions;
 
@@ -8,12 +7,10 @@ namespace Uanion.Application.Features.Profile.Commands.DeleteProfile;
 public class DeleteProfileCommandHandler : IRequestHandler<DeleteProfileCommand>
 {
     private readonly IProfileRepository _profileRepository;
-    private readonly IMapper _mapper;
 
-    public DeleteProfileCommandHandler(IProfileRepository profileRepository, IMapper mapper)
+    public DeleteProfileCommandHandler(IProfileRepository profileRepository)
     {
         _profileRepository = profileRepository;
-        _mapper = mapper;
     }
 
     public async Task Handle(DeleteProfileCommand request, CancellationToken cancellationToken)
